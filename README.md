@@ -18,7 +18,7 @@ The app has the following parts:
 - Run `npm install`
 - Run `npm start` or `ng serve`(for this you need the [angular-cli](https://github.com/angular/angular-cli))
 - The app will be running in `localhost:4200`
-- To run the test you need to run `ng test`.
+- To run the tests you need to run `ng test`.
 
 ## Backend
 
@@ -33,6 +33,7 @@ CRUD API built with Python, Flask and some of its features like sqlalchemy.
 - Run `pip install .` to install the dependencies (`requirements.txt`)
 - Start the app with `python api.py`
 - The app will be running in `localhost:5000`and all the endpoints lives under `/books`. Example: GET `http://localhost:5000/books/b9728cd5f0f14159869ae198f9895845`
+- To run the tests run the command `pytest`.
 
 ## Docker Compose
 
