@@ -2,16 +2,14 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BooksDashboardComponent } from './books-dashboard.component';
 import { BookService } from '../../services/book.service';
 import { Book } from '../../models/book.model';
-import { FormsModule } from '@angular/forms'; // Import FormsModule
-import { of } from 'rxjs'; // We can still use `of()` when needed
-
+import { FormsModule } from '@angular/forms';
+import { of } from 'rxjs'; 
 describe('BookDashboardComponent', () => {
   let component: BooksDashboardComponent;
   let fixture: ComponentFixture<BooksDashboardComponent>;
   let mockBookService: jasmine.SpyObj<BookService>;
 
   beforeEach(() => {
-    // Create a mock BookService
     mockBookService = jasmine.createSpyObj('BookService', [
       'getBooks',
       'createBook',
@@ -19,26 +17,24 @@ describe('BookDashboardComponent', () => {
       'deleteBook'
     ]);
 
-    // Setup default mock return value for getBooks
     mockBookService.getBooks.and.returnValue(of([
       { id: '1', title: 'Book 1', author: 'Author 1', read: false },
       { id: '2', title: 'Book 2', author: 'Author 2', read: true }
     ]));
 
-    // Setup create, update, delete mocks to return observable that resolves without any value
     mockBookService.createBook.and.returnValue(of({ id: '3', title: 'New Book', author: 'New Author', read: false }));
     mockBookService.updateBook.and.returnValue(of({ id: '1', title: 'Updated Book', author: 'Updated Author', read: false }));
     mockBookService.deleteBook.and.returnValue(of(void 0));
 
     TestBed.configureTestingModule({
       declarations: [BooksDashboardComponent],
-      imports: [FormsModule], // Import FormsModule here for ngModel support
+      imports: [FormsModule], 
       providers: [{ provide: BookService, useValue: mockBookService }]
     });
 
     fixture = TestBed.createComponent(BooksDashboardComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges(); // Trigger change detection
+    fixture.detectChanges();
   });
 
   it('should create the component', () => {
@@ -64,7 +60,7 @@ describe('BookDashboardComponent', () => {
     component.newBook = newBook;
     component.saveNewBook();
     
-    expect(component.books.length).toBe(2); // Ensure new book is added
+    expect(component.books.length).toBe(2);
     expect(mockBookService.createBook).toHaveBeenCalledWith(newBook);
   });
 

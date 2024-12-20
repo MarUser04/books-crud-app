@@ -4,10 +4,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
-/* Components */
+
 import { AppComponent } from './app.component';
 import { BooksDashboardComponent } from './components/books-dashbord/books-dashboard.component';
-/* Services */
+
 import { BookService } from './services/book.service';
 
 @NgModule({
