@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+  api:
+    build:
+      context: ./api
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./api:/usr/src/api
+    environment:
+      - FLASK_ENV=development
+
+  client:
+    build:
+      context: ./client
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./client:/usr/src/client
+    command: npm start
