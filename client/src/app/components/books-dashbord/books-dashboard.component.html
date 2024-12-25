@@ -35,9 +35,17 @@
       <tr *ngIf="addingNewBook">
         <td>
           <input [(ngModel)]="newBook.title" class="form-control">
+          <div class="new-book__warnings-container">
+            <span *ngIf="newBook.title.length === 0" class="text-danger">Title is required</span>
+            <span *ngIf="newBook.title.length < 3 && newBook.title.length > 0" class="text-danger">Title must be at least 3 characters long.</span>
+          </div>
         </td>
         <td>
           <input [(ngModel)]="newBook.author" class="form-control">
+          <div class="new-book__warnings-container">
+            <span *ngIf="newBook.author.length === 0" class="text-danger">Author is required</span>
+            <span *ngIf="newBook.author.length < 3 && newBook.author.length > 0" class="text-danger">Author must be at least 3 characters long.</span>
+          </div>
         </td>
         <td>
           <select [(ngModel)]="newBook.read" class="form-control">

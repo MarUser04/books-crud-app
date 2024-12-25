@@ -1,0 +1,6 @@
+.new-book__warnings-container {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  margin-left: 10px;
+}
