@@ -18,13 +18,13 @@ def create_book():
     db.session.add(book)
     db.session.commit()
 
-    return jsonify(book.to_dict()), 201
+    return jsonify(book.json()), 201
 
 # Get all books (GET /books)
 @books_bp.route('', methods=['GET'])
 def get_books():
     books = Book.query.all()
-    return jsonify([book.to_dict() for book in books])
+    return jsonify([book.json() for book in books])
 
 # Get a single book by ID (GET /books/<id>)
 @books_bp.route('/<id>', methods=['GET'])
@@ -33,7 +33,7 @@ def get_book(id):
     if not book:
         return jsonify({'error': 'Book not found'}), 404
 
-    return jsonify(book.to_dict())
+    return jsonify(book.json())
 
 # Update a book by ID (PUT /books/<id>)
 @books_bp.route('/<id>', methods=['PUT'])
@@ -49,7 +49,7 @@ def update_book(id):
 
     db.session.commit()
 
-    return jsonify(book.to_dict())
+    return jsonify(book.json())
 
 # Delete a book by ID (DELETE /books/<id>)
 @books_bp.route('/<id>', methods=['DELETE'])
