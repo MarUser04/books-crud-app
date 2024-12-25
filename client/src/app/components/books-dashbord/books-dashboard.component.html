@@ -16,9 +16,17 @@
       <tr *ngFor="let book of books; let i = index">
         <td>
           <input [(ngModel)]="book.title" [readonly]="!isEditing[i]" class="form-control">
+          <div class="book__warnings-container">
+            <span *ngIf="book.title.length === 0" class="text-danger">Title is required</span>
+            <span *ngIf="book.title.length < 3 && book.title.length > 0" class="text-danger">Title must be at least 3 characters long.</span>
+          </div>
         </td>
         <td>
           <input [(ngModel)]="book.author" [readonly]="!isEditing[i]" class="form-control">
+          <div class="book__warnings-container">
+            <span *ngIf="book.author.length === 0" class="text-danger">Author is required</span>
+            <span *ngIf="book.author.length < 3 && book.author.length > 0" class="text-danger">Author must be at least 3 characters long.</span>
+          </div>
         </td>
         <td>
           <select [(ngModel)]="book.read" [disabled]="!isEditing[i]" class="form-control">

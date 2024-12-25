@@ -8,6 +8,12 @@ app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@db:5432/books'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+    'pool_size': 32,
+    'pool_recycle': 60,
+    'pool_pre_ping': True,
+    'pool_timeout': 30
+}
 
 CORS(app)
 Swagger(app)

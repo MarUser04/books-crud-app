@@ -5,6 +5,9 @@ from marshmallow import Schema, fields
 db = SQLAlchemy()
 
 class Book(db.Model):
+
+    __tablename__ = 'books'
+
     id = db.Column(db.String(32), primary_key=True, default=lambda: uuid.uuid4().hex)
     title = db.Column(db.String(100), nullable=False)
     author = db.Column(db.String(100), nullable=False)
