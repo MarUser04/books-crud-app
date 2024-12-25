@@ -1,16 +1,13 @@
 import uuid
 from flask_sqlalchemy import SQLAlchemy
+from marshmallow import Schema, fields
 
 db = SQLAlchemy()
 
-# Book model
 class Book(db.Model):
-
-    __tablename__ = 'books'
-
     id = db.Column(db.String(32), primary_key=True, default=lambda: uuid.uuid4().hex)
-    title = db.Column(db.String(120), nullable=False)
-    author = db.Column(db.String(120), nullable=False)
+    title = db.Column(db.String(100), nullable=False)
+    author = db.Column(db.String(100), nullable=False)
     read = db.Column(db.Boolean, default=False)
 
     def json(self):
@@ -18,5 +15,15 @@ class Book(db.Model):
             'id': self.id,
             'title': self.title,
             'author': self.author,
-            'read': self.read,
+            'read': self.read
         }
+
+    @staticmethod
+    def schema(many=False):
+        class BookSchema(Schema):
+            id = fields.Str()
+            title = fields.Str(required=True)
+            author = fields.Str(required=True)
+            read = fields.Bool()
+
+        return BookSchema(many=many)

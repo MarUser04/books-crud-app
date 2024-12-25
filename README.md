@@ -35,6 +35,10 @@ CRUD API built with Python, Flask and some of its features like sqlalchemy.
 - The app will be running in `localhost:5000`and all the endpoints lives under `/books`. Example: GET `http://localhost:5000/books/b9728cd5f0f14159869ae198f9895845`
 - To run the tests run the command `pytest`.
 
+## Swagger Docs
+
+You can check the Swagger API Docs running in `http://localhost:5000/apidocs/`
+
 ## Docker Compose
 
 The app uses docker compose to manager the container both frontend and backend. Each part of the application has a `Dockerfile` that contains instructions for generating each Docker image.

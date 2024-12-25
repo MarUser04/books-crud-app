@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_cors import CORS
+from flasgger import Swagger
 from models import db
 from routes import books_bp
 
@@ -9,6 +10,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@db:5432/
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 CORS(app)
+Swagger(app)
 db.init_app(app)
 
 app.register_blueprint(books_bp, url_prefix='/books')
